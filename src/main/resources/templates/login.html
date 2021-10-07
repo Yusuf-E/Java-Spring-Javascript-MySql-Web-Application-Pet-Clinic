@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+  <div class="container">
+    <div class="col-sm-12">
+
+
+      <form th:action="@{/login}" method="post">
+        <section class="vh-100">
+          <div class="container py-5 h-100">
+            <div class="row d-flex align-items-center justify-content-center h-100">
+              <div class="col-md-8 col-lg-7 col-xl-6">
+                <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-login-form/draw2.svg" class="img-fluid" alt="Phone image">
+              </div>
+              <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                <form>
+                  <div th:if="${param.error}">
+                    <span style="color: red"><b>Kullanıcı Adı veya Şifre Hatalıdır!</b></span>
+                  </div>
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form1Example13">Email Adresi</label>
+                    <input type="email" id="form1Example13" name="username" class="form-control form-control-lg" />
+
+                  </div>
+
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    <label class="form-label" for="form1Example23">Şifre</label>
+                    <input type="password" id="form1Example23" name="password" class="form-control form-control-lg" />
+
+                  </div>
+
+
+
+                  <!-- Submit button -->
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">Giriş</button>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </form>
+    </div>
+  </div>
+</th:block>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>

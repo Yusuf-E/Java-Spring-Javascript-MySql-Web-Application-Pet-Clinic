@@ -1,0 +1,202 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+  <title>Kullanıcılar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+<th:block layout:fragment="content" >
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-primary mr-3" data-bs-toggle="modal" data-bs-target="#orderBuying2"><span class="fas fa-plus"></span> Yeni Kullanıcı Ekle</button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      </div>
+    </div>
+  </nav>
+
+  <!--<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>!!!!! HANGİSİ YAPILACAK SEÇİLECEK VE RENGİ BEYAZ CIKIYOR !!!!!
+-->
+
+
+
+
+
+
+
+  <div class="main-card mb-3 card mainCart">
+    <div class="card-header cardHeader">KULLANICILAR</div>
+
+    <div class="row mt-3" style="padding-right: 15px; padding-left: 15px;">
+
+    </div>
+    <div class="table-responsive">
+
+      <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+        <thead>
+        <tr class="text-center">
+          <th scope="col">AVATAR</th>
+          <th scope="col">ADI SOYADI</th>
+          <th scope="col">TELEFON</th>
+          <th scope="col">EMAİL</th>
+          <th scope="col">DURUMU</th>
+        </tr>
+        </thead>
+        <tbody class="text-center" id="userRow">
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade " id="orderBuying2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #3e64ff" >
+          <h5 class="modal-title" id="exampleModalLabel5" style="color: white">KULLANICI EKLE / BİLGİ GÜNCELLE</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-users" th:action="@{/users/add}" method="post" enctype="multipart/form-data" >
+            <div class="mb-3">
+              <label for="username" class="col-form-label">İsim</label>
+              <input type="text" class="form-control" name="username" id="username" required>
+            </div>
+            <div class="mb-3">
+              <label for="usersurname" class="col-form-label">Soyisim</label>
+              <input type="text" class="form-control" name="usersurname" id="usersurname" required>
+            </div>
+
+            <div class="mb-3">
+              <label  class="col-form-label">Şifre</label>
+              <input type="password" name="password"  class="form-control" required/>
+            </div>
+
+            <div class="mb-3">
+              <label for="useremail" class="col-form-label">Email</label>
+              <input type="text" class="form-control" name="useremail" id="useremail" required>
+            </div>
+
+
+            <div class="mb-3">
+              <label for="utype" class="form-label">Rol</label>
+              <select class="form-select" name="utype" id="utype" required>
+                <option value="0" >Seçiniz</option>
+                <option value="1">Admin</option>
+                <option value="2">Doktor</option>
+                <option value="3">Sekreter</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="userphone" class="col-form-label">Telefon Numarası</label>
+              <input type="text" class="form-control" name="userphone" id="userphone" required>
+            </div>
+
+            <div class="custom-file mb-3">
+              <label class="custom-file-label" for="userimagename">Resim Seçiniz</label>
+              <input type="file" class="custom-file-input" id="userimagename" name="imagename" required>
+
+            </div>
+            <div class="mb-3">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="userstatus" id="userstatus" value="option1">
+                <label class="form-check-label" for="userstatus">Aktif</label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Kaydet</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!--Update Modal -->
+  <div class="modal fade " id="userUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #3e64ff" >
+          <h5 class="modal-title" id="exampleModalLabel6" style="color: white">KULLANICI EKLE / BİLGİ GÜNCELLE</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-users-update" th:action="@{/users/update}" method="post" enctype="multipart/form-data" >
+            <input type="hidden" id="uid" name="uid">
+            <div class="mb-3">
+              <label for="username" class="col-form-label">İsim</label>
+              <input type="text" class="form-control" name="username" id="username-update" required>
+            </div>
+            <div class="mb-3">
+              <label for="usersurname-update" class="col-form-label">Soyisim</label>
+              <input type="text" class="form-control" name="usersurname" id="usersurname-update" required>
+            </div>
+            <div class="mb-3">
+              <label for="useremail-update" class="col-form-label">Email</label>
+              <input type="text" class="form-control" name="useremail" id="useremail-update" required>
+            </div>
+
+            <div class="mb-3">
+              <label  class="col-form-label">Şifre</label>
+              <input type="password" name="password"  class="form-control" required/>
+            </div>
+
+            <div class="mb-3">
+              <label for="utype-update" class="form-label">Rol</label>
+              <select class="form-select" name="utype" id="utype-update" required>
+                <option value="0" >Seçiniz</option>
+                <option value="1">Admin</option>
+                <option value="2">Doktor</option>
+                <option value="3">Sekreter</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="userphone-update" class="col-form-label">Telefon Numarası</label>
+              <input type="text" class="form-control" name="userphone" id="userphone-update" required>
+            </div>
+
+            <div class="custom-file mb-3">
+              <label class="custom-file-label" for="userimagename-update">Resim Seçiniz</label>
+              <input type="file" class="custom-file-input" id="userimagename-update" name="imagename" required>
+
+            </div>
+            <div class="mb-3">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="userstatus" id="userstatus-update" value="option1">
+                <label class="form-check-label" for="userstatus">Aktif</label>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Kaydet</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+</th:block>
+
+<th:block layout:fragment="script">
+  <script th:src="@{/js/user_add.js}"></script>
+</th:block>
+
+
+</body>
+
+</html>

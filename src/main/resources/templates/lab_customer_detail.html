@@ -1,0 +1,80 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+    <title>Ürünler Detay</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+<th:block layout:fragment="content" >
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    </nav>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="table-responsive">
+
+                <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                    <thead>
+                    <!--<tr>
+                        <th scope="col">Müşteri Adı ve Soyadı</th>
+                        <th scope="col">Telefon Numarası</th>
+                        <th scope="col">E-mail Adresi</th>
+                        <th scope="col">Tc No</th>
+                        <th scope="col">Not</th>
+
+                    </tr>-->
+                    </thead>
+                    <tbody id="customerRow">
+                    <tr >
+                       <a href="/patient-detail"> <td> <b>Adı ve Soyadı: </b> <span th:text="${customer.getCname()+' '+customer.getCsurname()}"></span> </td> </a>
+
+                    </tr>
+                    <tr><td><b>Telefon: </b> <span th:text="${customer.getMobile_phone()}"></span> </td></tr>
+                    <tr><td><b>Tc No: </b> <span th:text="${customer.getTax()}"></span> </td></tr>
+                    <tr><td><b>Not: </b> <span th:text="${customer.getCnote()}"></span> </td></tr>
+                    <tr><td><b>Adress: </b> <span th:text="${customer.getCaddress()}"></span> </td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="main-card mb-3 card mainCart">
+                <div class="card-header cardHeader text-center">Hasta</div>
+            </div>
+            <div class="card">
+
+                <div class="card-body" style="color: black">
+                   <tr th:each="item,iter:${customer.getPets()}">
+                       <a th:href="@{'/patientDetail/list/'+${item.getPid()}}"><span class="mr-5"><b>Adı: </b> <span th:text="${item.getCpatient()}"></span> </span></a>
+                       <span class="mr-5" th:if="${item.getCkind()} ==  1"><b>Türü: </b> <span>Kedi</span></span>
+                       <span class="mr-5" th:if="${item.getCkind()} ==  2"><b>Türü: </b> <span>Köpek</span></span>
+                       <span class="mr-5" th:if="${item.getCkind()} ==  3"><b>Türü: </b> <span>Kanatlı</span></span>
+                       <span class="mr-5" th:if="${item.getCkind()} ==  4"><b>Türü: </b> <span>Büyükbaş</span></span>
+                       <span class="mr-5" th:if="${item.getCkind()} ==  5"><b>Türü: </b> <span>Egzotik</span></span>
+                       <span class="mr-5" th:if="${item.getCkind()} ==  6"><b>Türü: </b> <span>Diğer</span></span>
+                       <span class="mr-5"><b>Dogum Tarihi: </b> <span th:text="${item.getCbirth()}"></span> </span>
+                       <span><b>Cinsiyet: </b> <span th:text="${item.getCgender()}"></span> </span>
+                       <hr>
+
+                   </tr>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/lab_customer_detail.js}"></script>
+</th:block>
+
+</body>
+</html>

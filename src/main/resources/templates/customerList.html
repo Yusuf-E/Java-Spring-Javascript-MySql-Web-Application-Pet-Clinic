@@ -1,0 +1,175 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+  <title>Müşteri Arama</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+<th:block layout:fragment="content" >
+
+  <div class="main-card mb-3 card mainCart">
+    <div class="card-header cardHeader">Müşteriler</div>
+
+    <div class="row mt-3" style="padding-right: 15px; padding-left: 15px;">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <div class="input-group flex-nowrap">
+          <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
+          <input id="search" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
+          <button id="customerSearch" class="btn btn-outline-primary">Ara</button>
+        </div>
+      </div>
+
+
+
+
+    </div>
+    <div class="table-responsive">
+
+      <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+        <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Adı</th>
+          <th scope="col">Soyadı</th>
+          <th scope="col">Telefon Numarası</th>
+          <th scope="col">E-Mail</th>
+          <th scope="col">Tc</th>
+          <th scope="col">Not</th>
+          <th scope="col">Adres</th>
+        </tr>
+        </thead>
+        <tbody id="customerRow">
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Customer Modal -->
+  <div class="modal fade" id="customerUpdateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #3e64ff" >
+          <h5 class="modal-title" id="exampleModalLabel4" style="color: white">KAYITLI MÜŞTERİYE SATIŞ</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-customer-update" class="row p-3">
+            <div class="col-md-3 mb-3">
+              <label for="cname" class="form-label">Hasta Sahibi Adı</label>
+              <input type="text" name="cname" id="cname" class="form-control" placeholder="Hasta Sahibi Adını Yazınız" required />
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="csurname" class="form-label">Hasta Sahibi Soyadı</label>
+              <input type="text" name="csurname" id="csurname" class="form-control" placeholder="Hasta Sahibi Soyadını Yazınız" required />
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label for="mobile_phone" class="form-label">Cep Telefonu</label>
+              <input type="text" name="mobile_phone" id="mobile_phone" class="form-control" placeholder="Telefon Numarasını Yazınız" required />
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label for="email" class="form-label">E-Mail</label>
+              <input type="email" name="email" id="email" class="form-control" placeholder="Mail Adresini Yazınız" required />
+            </div>
+
+
+
+            <div class="col-md-3 mb-3">
+              <label for="tax" class="form-label">Vergi No / Tc No</label>
+              <input type="number" name="tax" id="tax" class="form-control" placeholder="Tc Kimlik Numarasını Yazınız" required/>
+            </div>
+
+
+            <div class="col-md-3 mb-3">
+              <label for="tax_administration" class="form-label">Vergi Dairesi</label>
+              <input type="text" name="tax_administration" id="tax_administration" class="form-control" placeholder="Vergi Dairesi Adını Yazınız" />
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label for="ctype" class="form-label">Müşteri Grubu</label>
+              <select class="form-select" name="ctype" id="ctype">
+                <option value="0" >Seçiniz</option>
+                <option value="1">Kurumsal</option>
+                <option value="2">Birseysel</option>
+              </select>
+            </div>
+
+
+
+            <div class="col-md-3 mb-3">
+              <label for="cNote" class="form-label">Not</label>
+              <input type="text" name="cNote" id="cnote" class="form-control" placeholder="Not Varsa Yazınız" />
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label for="cProvince" class="form-label">İl</label>
+              <input type="text" name="cProvince" id="cprovince" class="form-control" placeholder="İl Bilgisini Yazınız" />
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label for="cDistrict" class="form-label">İlçe</label>
+              <input type="text" name="cDistrict" id="cdistrict" class="form-control" placeholder="İlçe Bilgisini Yazınız" />
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label for="cAddress" class="form-label">Adres</label>
+              <input type="text" name="cAddress" id="caddress" class="form-control" placeholder="Adres Yazınız" />
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <div class="input-group ">
+                <label  class="form-label">Müşteri İndirim Oranı</label>
+                <div class="input-group ">
+                  <span class="input-group-text" id="addon-wrapping0"><i class="fa fa-percent"></i></span>
+                  <input name="cdiscount" id="cdiscount" type="number" class="form-control" placeholder="% Oranı" aria-label="Username" aria-describedby="addon-wrapping0">
+                </div>
+              </div>
+            </div>
+
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+              <button onclick="updateCustomer()" type="button" class="btn btn-primary"data-bs-dismiss="modal">Gönder</button>
+            </div>
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+</th:block>
+
+<th:block layout:fragment="script">
+  <script th:src="@{/js/customer_list.js}"></script>
+</th:block>
+
+
+</body>
+
+</html>

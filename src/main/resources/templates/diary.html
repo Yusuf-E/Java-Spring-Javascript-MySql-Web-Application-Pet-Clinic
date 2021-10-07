@@ -1,0 +1,111 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+    <title>Tedarikçiler</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+<th:block layout:fragment="content" >
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button onclick="diaryAdd()"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#orderBuying3">Kaydet</button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        </div>
+        </div>
+    </nav>
+
+    <div class="main-card mb-3 card mainCart">
+        <div class="card-header cardHeader">Ajandam</div>
+
+        <form id="form-diary" class="row p-3">
+            <div class="col-md-2 mb-3">
+
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="dtitle" class="form-label">Başlık</label>
+                <input type="text" name="dtitle" id="dtitle" class="form-control" placeholder="Başlık Yazınız" required />
+            </div>
+            <div class="col-md-2 mb-3">
+
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="ddate" class="form-label">Tarih</label>
+                <input type="date" name="ddate" id="ddate" class="form-control" placeholder="" required />
+            </div>
+            <div class="col-md-2 mb-3">
+
+            </div>
+            <div class="col-md-2 mb-3">
+
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="dnote" class="form-label">Açıklama</label>
+                <textarea class="w-100" id="dnote" name="dnote" rows="4" ></textarea>
+            </div>
+            <div class="col-md-2 mb-3">
+
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="dtime" class="form-label">Saat</label>
+                <input type="text" name="dtime" id="dtime" class="form-control" placeholder=" dd:ss " required />
+
+                <div class="col-md-12 mb-3">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="dstatus" value="option1">
+                        <label class="form-check-label" for="dstatus">Aktif</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 mb-3">
+
+            </div>
+        </form>
+    </div>
+    <div class="main-card mb-3 card mainCart">
+        <div class="card-header cardHeader">Geçmiş / Bekleyen Notlar</div>
+
+        <div class="row mt-3" style="padding-right: 15px; padding-left: 15px;">
+
+        </div>
+        <div class="table-responsive">
+
+            <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                <thead>
+                <tr >
+                    <th scope="col">ID</th>
+                    <th scope="col">Başlık</th>
+                    <th scope="col">Açıklama</th>
+                    <th scope="col">Tarih</th>
+                    <th scope="col">Saat</th>
+                </tr>
+                </thead>
+                <tbody id="NotesRow">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/diary.js}"></script>
+</th:block>
+
+
+</body>
+
+</html>

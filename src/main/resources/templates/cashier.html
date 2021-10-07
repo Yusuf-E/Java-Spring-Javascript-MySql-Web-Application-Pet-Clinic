@@ -1,0 +1,182 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+  <title>Alış Arama</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+<th:block layout:fragment="content" >
+
+
+
+
+
+  <div class="main-card mb-3 card mainCart">
+    <div class="card-header cardHeader">KASA HAREKETLERİ</div>
+
+
+    <div class="col-sm-3 mt-3 ">
+      <div class="btn-group " role="group" aria-label="Basic mixed styles example">
+        <button onclick="opeList(false)" type="button" class="btn btn-success ">PARA GİRİŞİ</button>
+        <button onclick="opeList(true)" type="button" class="btn btn-danger ">PARA ÇIKIŞI</button>
+      </div>
+    </div>
+
+    <div class="col-sm-9 mt-4 ">
+      <div class="btn-group " role="group" aria-label="Basic mixed styles example">
+        <button onclick="allSafe()" type="button" class="btn btn-primary rounded-left ">TÜMÜ</button>
+        <button onclick="cashList(1)" type="button" class="btn btn-warning  rounded-left ">NAKİT</button>
+        <button onclick="cashList(2)"type="button" class="btn btn-secondary  rounded-left ">KREDİ KARTI</button>
+        <button onclick="cashList(3)"type="button" class="btn btn-success  rounded-left ">BANKA HAVALESİ</button>
+
+
+      </div>
+    </div>
+
+
+
+    <div class="row mt-3" style="padding-right: 15px; padding-left: 15px;">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+
+        <div class="row">
+          <div class="col-sm-6"></div>
+          <div class="col-sm-6">
+            <div class="input-group ">
+
+              <button type="button" class="btn-lg btn-warning  mr-3"id="samount" >KASA PARA GİRİŞİ YAP</button>
+
+
+
+
+            </div>
+          </div>
+
+
+
+
+
+
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+    <div class="table-responsive">
+
+      <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+        <thead>
+        <tr>
+          <th scope="col">FATURA</th>
+          <th scope="col">TARİH</th>
+          <th scope="col">İŞLEM</th>
+          <th scope="col">ÖDEME YÖNTEMİ</th>
+          <th scope="col">MÜŞTERİ</th>
+          <th scope="col">AÇIKLAMA</th>
+
+          <th scope="col">TUTAR</th>
+        </tr>
+        </thead>
+        <tbody id="safeRow">
+        <tr>
+
+
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal fade" id="orderBuying1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #3e64ff" >
+          <h5 class="modal-title" id="exampleModalLabel4" style="color: white">KASA PARA GİRİŞİ YAP</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label"></label>
+              <input type="text" class="form-control" id="recipient-name" placeholder="Tedarikçi Firma Arayın">
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name1" class="col-form-label">Ürün Arama</label>
+              <input type="text" class="form-control" id="recipient-name1" placeholder="Ürün isminden arayın">
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name2" class="col-form-label">Fatura No</label>
+              <input type="text" class="form-control" id="recipient-name2" >
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label"></label>
+              <textarea class="form-control" id="message-text" placeholder="Alış notunuzu giriniz"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kapat</button>
+          <button type="button" class="btn btn-primary">İşlemler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade " id="orderBuying2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #3e64ff" >
+          <h5 class="modal-title" id="exampleModalLabel5" style="color: white">MASRAF GİRİŞ</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="supplier-name" class="col-form-label">Tedarikçi Adı</label>
+              <input type="text" class="form-control" id="supplier-name">
+            </div>
+            <div class="mb-3">
+              <label for="supplier-posta" class="col-form-label">Tedarikçi E-posta</label>
+              <textarea class="form-control" id="supplier-posta"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="supplier-tel" class="col-form-label">Tedarikçi Telefon</label>
+              <textarea class="form-control" id="supplier-tel"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info" data-bs-dismiss="modal">Ekle</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  </div>
+
+</th:block>
+
+<th:block layout:fragment="script">
+  <script th:src="@{/js/safe.js}"></script>
+</th:block>
+
+
+</body>
+
+</html>

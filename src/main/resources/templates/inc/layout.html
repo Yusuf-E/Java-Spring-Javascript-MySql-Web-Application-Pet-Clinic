@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="stylesheet" th:href="@{/dist/css/bootstrap-select.css}">
+<link rel="stylesheet" th:href="@{/dist/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/fontawesome-free-5.15.4-web/css/all.min.css}">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="stylesheet" th:href="@{/css/site.css}">
+
+</head>
+<body>
+<div class="wrapper d-flex align-items-stretch">
+
+  <th:block th:replace="inc/sidebar :: sidebar"></th:block>
+  <div id="content" class="p-4 p-md-5">
+    <th:block th:replace="inc/navbar :: navbar"></th:block>
+    <th:block layout:fragment="content"></th:block>
+  </div>
+
+
+</div>
+
+
+<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/dist/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/dist/js/bootstrap-select.js}"></script>
+<script th:src="@{/js/dist/popover.js}"></script>
+<script th:src="@{/css/fontawesome-free-5.15.4-web/js/all.min.js}"></script>
+<script th:src="@{/js/site.js}"></script>
+<th:block layout:fragment="script"></th:block>
+</body>

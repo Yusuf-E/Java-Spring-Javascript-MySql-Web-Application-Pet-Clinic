@@ -1,0 +1,188 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+  <title>Satış Arama</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+<th:block layout:fragment="content" >
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+      </button>-->
+      <button type="button" class="btn btn-info mr-3 " data-bs-toggle="modal" data-bs-target="#exampleModal" >Perakende Satış</button>
+      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#pSaleModel" >Kayıtlı Müşteriye Satış</button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      </div>
+    </div>
+  </nav>
+
+  <!--<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>!!!!! HANGİSİ YAPILACAK SEÇİLECEK VE RENGİ BEYAZ CIKIYOR !!!!!
+-->
+
+
+  <div class="main-card mb-3 card mainCart">
+    <div class="card-header cardHeader">Satışlar</div>
+
+    <div class="row mt-3" style="padding-right: 15px; padding-left: 15px;">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+      </div>
+
+
+
+
+    </div>
+    <div class="table-responsive">
+
+      <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Müşteri</th>
+          <th scope="col">Ödeme Tipi</th>
+          <th scope="col">Tutar</th>
+          <th scope="col">Not</th>
+          <th scope="col">Tarih</th>
+        </tr>
+        </thead>
+        <tbody id="tableBuy">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #3e64ff" >
+          <h5 class="modal-title" id="title" style="color: white">PERAKENDE SATIŞ</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class=" mb-3">
+              <label for="product" class="form-label">Ürünler</label>
+              <select name="product" id="products" class="selectpicker" data-width="100%" data-show-subtext="true" data-live-search="true">
+
+              </select>
+            </div>
+            <div class=" mb-3">
+              <label for="warehouse" class="form-label">Depo</label>
+              <select name="warehouse" id="warehouses" class="selectpicker" data-width="100%" data-show-subtext="true" data-live-search="true">
+
+              </select>
+            </div>
+            <div class=" mb-3">
+              <label for="bNo" class="form-label">Fiş No</label>
+              <input type="text" min="1" max="100" name="bNo" id="biNo" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+              <label for="note" class="col-form-label"></label>
+              <textarea class="form-control" id="notes" name="note" placeholder="Satış notnuzu giriniz"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <div class="mb-3">
+            <select class="form-select" name="payment-type" id="payment-types">
+              <option value="0" >Seçiniz</option>
+              <option value="1">Nakit</option>
+              <option value="2">Banka Kartı</option>
+              <option value="3">Banka Havalesi</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button onclick="fncSell(0)" type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="pSaleModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #3e64ff" >
+          <h5 class="modal-title" id="exampleModalLabel4" style="color: white">KAYITLI MÜŞTERİYE SATIŞ</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+                <label for="customers" class="form-label">Müşteriler</label>
+                <select name="customers" id="customers" class="selectpicker" data-width="100%" data-show-subtext="true" data-live-search="true">
+
+                </select>
+
+            </div>
+            <div class=" mb-3">
+              <label for="product" class="form-label">Ürünler</label>
+              <select name="product" id="product" class="selectpicker" data-width="100%" data-show-subtext="true" data-live-search="true">
+
+              </select>
+            </div>
+            <div class=" mb-3">
+              <label for="warehouse" class="form-label">Depo</label>
+              <select name="warehouse" id="warehouse" class="selectpicker" data-width="100%" data-show-subtext="true" data-live-search="true">
+
+              </select>
+            </div>
+            <div class=" mb-3">
+              <label for="bNo" class="form-label">Fiş No</label>
+              <input type="text" min="1" max="100" name="bNo" id="bNo" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+              <label for="note" class="col-form-label"></label>
+              <textarea class="form-control" id="note" name="note" placeholder="Satış notnuzu giriniz"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <div class="mb-3">
+            <select class="form-select" name="payment-type" id="payment-type">
+              <option value="0" >Seçiniz</option>
+              <option value="1">Nakit</option>
+              <option value="2">Banka Kartı</option>
+              <option value="3">Banka Havalesi</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button onclick="fncSell(1)" type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+
+</th:block>
+
+<th:block layout:fragment="script">
+  <script th:src="@{/js/sale.js}"></script>
+</th:block>
+
+</body>
+
+</html>

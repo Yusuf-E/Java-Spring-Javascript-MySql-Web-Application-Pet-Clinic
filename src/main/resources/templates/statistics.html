@@ -1,0 +1,205 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+    <title>Klinik İstatislikleri</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+
+<!--Navbar  -->
+
+<th:block layout:fragment="content" >
+
+
+
+    <h4 class="mb-3">
+        Klinik İstatislikleri
+
+    </h4>
+
+
+    <div class="row">
+
+            <div class="col-sm-4">
+                <div class="card mb-3"
+                     style=" background-color:#55ACEE; height:140px;border-width:0; box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);">
+                    <div class="card-body">
+                        <div class="row">
+                            <center><span class="fas fa-star text-center" ></span></center>
+                            <h4 class="card-title badge badge-success mr-1 ml-0 text-white"
+                                style="font-size:.88rem;background-color: #55ACEE">Bu Hafta En Çok Yogun Gün
+                                <hr class="p-0 mb-0 mt-1"></h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 border-right" >
+                                <span class="ff-2 fs-14 bold" style="color: white;"><b> <span class="far fa-star"></span>Tarih<span id="sdate">  </span></b></span>
+                            </div>
+                            <div class="col-sm-6" >
+                                <div class="row">
+                                    <div class="col-sm-12 text-center"> <span class="ff-2 fs-14 bold" style="color: white;"><b> <span class="fas fa-share"></span> İşlem Sayısı </b></span></div>
+                                    <div class="col-sm-12 text-center"><span class="ff-2 fs-14 bold" style="color: white;"><b id="opCount"> 0 </b></span></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="col-sm-4">
+                <div class="card mb-3"
+                     style=" background-color:#DD4B39; height:140px;border-width:0; box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);">
+                    <div class="card-body">
+                        <div class="row">
+                            <center><span class="fas fa-star text-center" ></span></center>
+                            <h4 class="card-title badge badge-success mr-1 ml-0 text-white"
+                                style="font-size:.88rem;background-color: #DD4B39">Bu Hafta En Çok İşlem Yaptıran Müşteri
+                                <hr class="p-0 mb-0 mt-1"></h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 border-right" >
+                                <span class="ff-2 fs-14 bold" style="color: white;"><b> <span class="fas fa-thumbs-up"></span> <span id="cusName"> Müşteri Adı</span> </b></span>
+                            </div>
+                            <div class="col-sm-6" >
+                                <div class="row">
+
+                                    <div class="col-sm-12 text-center"> <span class="ff-2 fs-14 bold" style="color: white;"><b> <span class="fas fa-share"></span> İşlem Sayısı </b></span></div>
+                                    <div class="col-sm-12 text-center"><span class="ff-2 fs-14 bold" style="color: white;"><b id="cusCount"> 0 </b></span></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="col-sm-4">
+                <div class="card mb-3"
+                     style=" background-color:#1769FF; height:140px;border-width:0; box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);">
+                    <div class="card-body">
+                        <div class="row">
+                            <center><span class="fas fa-star text-center" ></span></center>
+                            <h4 class="card-title badge badge-success mr-1 ml-0 text-white"
+                                style="font-size:.88rem;background-color: #1769FF">Bir Haftalık Ziyaret Sayısı
+                                <hr class="p-0 mb-0 mt-1"></h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4"> <span  class="ff-2 fs-14 bold" style="color: white;"><b id="dateCount"> +0 </b></span></div>
+                            <div class="col-sm-4"></div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+    <div class="row">
+        <div class="col-sm-6">
+
+            <div class="card ">
+                <div class="card-header bg-primary text-white" >
+                    Bu Hafta Hangi Müşteri Ne kadar Kazandırdı
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">ADI SOYADI</th>
+                            <th scope="col">ÖDEME TİPİ</th>
+                            <th scope="col">TOPLAM HARCAMA</th>
+
+                        </tr>
+                        </thead>
+                        <tbody id="bestCustomers">
+
+
+                        </tbody>
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+
+            <div class="card ">
+                <div class="card-header bg-primary text-white" ><span class="fas fa-sync-alt"></span>
+                   Ödeme Tipine Göre Toplam Kazanç
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">TOPLAM KAZANÇ</th>
+                            <th scope="col">ÖDEME TİPİ</th>
+
+
+                        </tr>
+                        </thead>
+                        <tbody id="payment-type">
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-9"></div>
+        <div class="col-sm-3"></div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/statistics.js}"></script>
+</th:block>
+
+
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/dist/popover.js"></script>
+<script src="dist/js/bootstrap.min.js"></script>
+<script src="css/fontawesome-free-5.15.4-web/js/all.min.js"></script>
+<script src="js/site.js"></script>
+</body>
+
+</html>

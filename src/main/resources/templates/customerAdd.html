@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="inc/layout">
+
+<head>
+  <title>Müşteriler</title>
+</head>
+
+<body>
+<th:block layout:fragment="content">
+  <!-- Page Content  -->
+  <div class="main-card mb-3 card mainCart">
+    <div class="card-header cardHeader">Müşteri Bilgileri</div>
+
+    <form id="allContent" class="row p-3">
+
+
+    <form id="customerForm" class="row p-3">
+      <div class="col-md-3 mb-3">
+        <label for="cname" class="form-label">Hasta Sahibi Adı</label>
+        <input type="text" name="cname" id="cname" class="form-control"  required />
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="csurname" class="form-label">Hasta Sahibi Soyadı</label>
+        <input type="text" name="csurname" id="csurname" class="form-control"  required />
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="mobile_phone" class="form-label">Cep Telefonu</label>
+        <input type="text" name="mobile_phone" id="mobile_phone" class="form-control"  required />
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="email" class="form-label">E-Mail</label>
+        <input type="email" name="email" id="email" class="form-control"  required />
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="tax" class="form-label">Vergi No / Tc No</label>
+        <input type="number" name="tax" id="tax" class="form-control"  required/>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="tax_administration" class="form-label">Vergi Dairesi</label>
+        <input type="text" name="tax_administration" id="tax_administration" class="form-control"  />
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="ctype" class="form-label">Müşteri Grubu</label>
+        <select class="form-select" name="ctype" id="ctype">
+          <option value="0" >Seçiniz</option>
+          <option value="1">Kurumsal</option>
+          <option value="2">Bireysel</option>
+        </select>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="cNote" class="form-label">Not</label>
+        <input type="text" name="cNote" id="cnote" class="form-control" />
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="cProvince" class="form-label">İl</label>
+        <input type="text" name="cProvince" id="cprovince" class="form-control"  />
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="cDistrict" class="form-label">İlçe</label>
+        <input type="text" name="cDistrict" id="cdistrict" class="form-control"  />
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="cAddress" class="form-label">Adres</label>
+        <input type="text" name="cAddress" id="caddress" class="form-control"  />
+      </div>
+      <div class="col-md-3 mb-3">
+        <div class="input-group ">
+          <label  class="form-label">Müşteri İndirim Oranı</label>
+          <div class="input-group ">
+            <span class="input-group-text" id="addon-wrapping"><i class="fa fa-percent"></i></span>
+            <input name="cdiscount" id="cdiscount" type="number" class="form-control"  aria-label="Username" aria-describedby="addon-wrapping">
+          </div>
+        </div>
+      </div>
+    </form>
+
+  <div class="main-card mb-3 card mainCart">
+    <div class="card-header cardHeader">Hasta Bilgileri</div>
+    <div class="btn-group col-md-3 mt-3 " role="group">
+
+      <button type="button" class="btn btn-success mr-3" onclick="fncAddFormRow()">Yeni Satır Ekle</button>
+      <button type="button" class="btn btn-info mr-3 " data-bs-toggle="modal" data-bs-target="#exampleModal" >Renk</button>
+    </div>
+    <div class="row">
+      <form class="row p-4" id="form-loop">
+        <div class="row">
+          <div class="col-sm-1">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"><button type="button" class="btn btn-danger mt-5">Sil</button></div>
+            <div class="col-sm-4"></div>
+          </div>
+          <div class="col-sm-10">
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label for="cpatient0" class="form-label">Hasta Adı</label>
+                <input type="text" name="cpatient0" id="cpatient0" class="form-control"  required />
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="cchip0" class="form-label">Çip Numarası</label>
+                <input type="number" name="cchip0" id="cchip0" class="form-control"  required />
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="creport0" class="form-label">Karne / Küpe Numarası</label>
+                <input type="number" name="creport0" id="creport0" class="form-control"  required />
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="cbirth0" class="form-label">Doğum Tarihi</label>
+                <input type="text" name="cbirth0" id="cbirth0" class="form-control" />
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="ckind0" class="form-label">Tür</label>
+                <select class="form-select" name="ckind0" id="ckind0">
+                  <option value="0" >Seçiniz</option>
+                  <option value="1">Kedi</option>
+                  <option value="2">Köpek</option>
+                  <option value="3">Kanatlı</option>
+                  <option value="4">Büyükbaş</option>
+                  <option value="5">Egzotik</option>
+                  <option value="6">Diğer</option>
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label  class="form-label">Renk</label>
+                <select  id="petcolor0" class="selectpicker" data-width="100%"  data-live-search="true">
+
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="row">
+                  <div class="col-sm-9">
+                    <label  class="form-label" >Irkı</label>
+                    <select  id="petrace0" class="selectpicker" data-width="100%"  data-live-search="true">
+
+                    </select>
+
+                  </div>
+                  <div class="col-sm-3" style="float: left">
+                    <label style="color: white"> ekle</label>
+                    <button type="button" class=" btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal1">...</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label  class="form-label">Cinsiyet</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="exampleRadios0" id="cMale0" value="option1" checked>
+                  <label class="form-check-label" for="cMale0">
+                    Erkek
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="exampleRadios0" id="cFemale0" value="option2">
+                  <label class="form-check-label" for="cFemale0">
+                    Dişi
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label  class="form-label">Kısırlaştırılmış</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="cOption0" id="cYes0" value="option3" checked>
+                  <label class="form-check-label" for="cYes0">
+                    Evet
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="cOption0" id="cNo0" value="option4">
+                  <label class="form-check-label" for="cNo0">
+                    Hayır
+                  </label>
+                </div>
+              </div>
+            </div>
+            <hr>
+          </div>
+
+        </div>
+      </form>
+        <div class="row">
+        <div class="col-sm-11"></div>
+        <div class="col-sm-1">
+          <button onclick="addCustomer()" type="button" class="btn btn-primary mb-3">Kaydet</button>
+        </div>
+        </div>
+
+
+    </div>
+
+  </div>
+
+
+
+    </form>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-color">
+            <div class="mb-3">
+              <label for="pcolor" class="col-form-label" >Renk</label>
+              <input type="text" class="form-control" id="pcolor" required>
+            </div>
+            <div class="modal-footer">
+
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Ekle</button>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-race">
+            <div class="mb-3">
+              <label for="prace1" class="col-form-label" >Irk</label>
+              <input type="text" class="form-control" id="prace1" required>
+            </div>
+            <div class="modal-footer">
+
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary"data-bs-dismiss="modal">Ekle</button>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+</th:block>
+
+
+<th:block layout:fragment="script">
+  <script th:src="@{/js/customer_add.js}"></script>
+</th:block>
+
+
+
+</body>
+
+</html>

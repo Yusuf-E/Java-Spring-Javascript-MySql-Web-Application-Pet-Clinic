@@ -1,0 +1,271 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+  <title>Ürünler Detay</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+<th:block layout:fragment="content"  th:if="${product != null}">
+
+
+  <nav  class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <button type="button" class="btn-sm btn-success  mr-3"  data-bs-toggle="modal" data-bs-target="#add-stock" >Stoklara Giriş Yap/Güncelle</button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      </div>
+    </div>
+  </nav>
+  <div class="row">
+    <div class="col-sm-3">
+      <ul class="list-group ">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="ms-2 me-auto">
+            <div  class=""th:text="${product.getProductname()}"></div>
+          </div>
+        </li>
+        <hr class="invisible">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+
+            <div class="row w-100">
+              <div class="col-md-6">Durumu</div>
+              <div class="col-md-6"th:text="${product.getProductstatus()}"></div>
+            </div>
+
+        </li>
+        <hr class="invisible">
+
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+
+          <div class="row w-100">
+            <div class="col-md-6">Ürün Barkodu</div>
+            <div class="col-md-6"th:text="${product.getProductbarcode()}"></div>
+          </div>
+
+        </li>
+        <hr class="invisible">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+
+          <div class="row w-100">
+            <div class="col-md-6">Birim</div>
+            <div class="col-md-6"th:text="${product.getProductunit()}"></div>
+          </div>
+        </li>
+        <hr class="invisible">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+
+          <div class="row w-100">
+            <div class="col-md-6">Ürün Kodu</div>
+            <div class="col-md-6"th:text="${product.getProductcode()}"></div>
+          </div>
+        </li>
+        <hr class="invisible">
+
+
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+
+          <div class="row w-100">
+            <div class="col-md-6">Kategori Adı</div>
+            <div class="col-md-6"th:text="${product.getProductcategory().getCategoryname()}"></div>
+          </div>
+        </li>
+        <hr class="invisible">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+
+          <div class="row w-100">
+            <div class="col-md-6">Ürün Tipi</div>
+            <div class="col-md-6"th:text="${product.getProducttype()}"></div>
+          </div>
+        </li>
+        <hr class="invisible">
+        <li class="list-group-item d-flex justify-content-between ">
+          <div class="row w-100">
+            <button type="button" class="btn btn-info mr-3 "  data-bs-toggle="modal" data-bs-target="#updateProduct" >Düzenle</button>
+          </div>
+        </li>
+        <hr class="invisible">
+      </ul>
+    </div>
+    <div class="col-sm-9">
+      <div class="main-card mb-3 card mainCart">
+        <div class="card-header cardHeader">Stok Hareketleri</div>
+        <div class="col-md-12 mb-3">
+          <label for="warehouse" class="form-label" style="color: black"><b>Depo</b> </label>
+          <select  id="warehouse" class="selectpicker" data-width="100%"  data-live-search="true">
+
+          </select>
+        </div>
+        <div class="table-responsive">
+          <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+            <thead>
+            <tr>
+              <th scope="col">Tarih</th>
+              <th scope="col">Ürün Adı</th>
+              <th scope="col">Depo</th>
+              <th scope="col">Yapılan İşlem</th>
+              <th scope="col">Kalan Stok</th>
+
+            </tr>
+            </thead>
+            <tbody id="stockRow">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="updateProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #3e64ff" >
+          <h5 class="modal-title" id="exampleModalLabel3" style="color: white">ÜRÜN EKLE</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="product-update-form">
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="product-name" class="col-form-label">Ürün Adı</label>
+                <input  type="text" class="form-control" id="product-name" th:value="${product.getProductname()}">
+                <input  type="hidden" class="form-control" id="hip" th:value="${product.getProid()}">
+              </div>
+              <div class="col-sm-6"></div>
+              <div class="col-sm-6">
+                <label for="product-unit" class="form-label">Birim</label>
+                <select  class="form-select" name="product-unit" id="product-unit" th:value="${product.getProductunit()}">
+                  <option th:selected="(${product.getProductunit()} ==0)"  value="0" >Seçiniz</option>
+                  <option th:selected="(${product.getProductunit()} ==1)" value="1">Adet</option>
+                  <option th:selected="(${product.getProductunit()} ==2)" value="2">Kutu</option>
+                  <option th:selected="(${product.getProductunit()} ==3)"  value="3">Şişe</option>
+                  <option th:selected="(${product.getProductunit()} ==4)"  value="5">Diğer</option>
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="product-category"  class="form-label">Kategori</label>
+                <select  id="product-category" class="selectpicker" data-width="100%"  data-live-search="true" >
+
+                  <option  id="selectedCat"  data-subtext="" th:value="${product.getProductcategory().getCaid()}" th:text="${product.getProductcategory().getCategoryname()}" selected>
+
+                </select>
+              </div>
+              <div class="col-sm-6">
+                <label for="product-type" class="form-label">Ürün Tipi</label>
+                <select class="form-select" name="product-type" id="product-type">
+                  <option th:selected="(${product.getProducttype()} ==0)" value="0" >Seçiniz</option>
+                  <option th:selected="(${product.getProducttype()} ==1)" value="1">Çiftlik Aşı</option>
+                  <option th:selected="(${product.getProducttype()} ==2)" value="2">Damla</option>
+                  <option th:selected="(${product.getProducttype()} ==3)" value="3">Enjeksiyon</option>
+                  <option th:selected="(${product.getProducttype()} ==4)" value="4">Hap</option>
+                  <option th:selected="(${product.getProducttype()} ==5)" value="5">Diğer</option>
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="product-supplier"  class="form-label">Tedarikçi</label>
+                <select  id="product-supplier" class="selectpicker" data-width="100%"  data-live-search="true">
+                  <option id="selectedSupp" data-subtext="" th:value="${product.getProductsuppliers().getSid()}" th:text="${product.getProductsuppliers().getSname()}" selected></option>
+
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <label for="pbarcode" class="col-form-label">Ürün Barkod</label>
+                <input type="text" class="form-control" id="pbarcode" th:value="${product.getProductbarcode()}">
+              </div>
+              <div class="col-sm-4">
+                <label for="pcode" class="col-form-label">Ürün Kodu</label>
+                <input type="text" class="form-control" id="pcode" disabled th:value="${product.getProductcode()}">
+              </div>
+              <div class="col-sm-4">
+                <label for="ptax" class="form-label">KDV</label>
+                <select class="form-select" name="ptax" id="ptax" required>
+                  <option th:selected="(${product.getProducttax()} ==0)" value="0">Seçiniz</option>
+                  <option th:selected="(${product.getProducttax()} ==1)" value="0">Dahil</option>
+                  <option th:selected="(${product.getProducttax()} ==2)" value="1">%1</option>
+                  <option th:selected="(${product.getProducttax()} ==3)" value="2">%8</option>
+                  <option th:selected="(${product.getProducttax()} ==4)"  value="3">%18</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <label for="bprice" class="col-form-label">Alış Fiyatı</label>
+                <input type="text" class="form-control" id="bprice" th:value="${product.getBuyprice()}">
+              </div>
+              <div class="col-sm-4">
+                <label for="sprice" class="col-form-label">Satış Fiyatı</label>
+                <input type="text" class="form-control" id="sprice" th:value="${product.getSellprice()}">
+              </div>
+              <div class="col-sm-4">
+                <label for="critic" class="col-form-label">Kritik Stok Miktarı</label>
+                <input type="text" class="form-control" id="critic" th:value="${product.getCriticalquantity()}">
+              </div>
+
+              <div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" th:checked="(${product.getProductstatus()} =='Aktif')"  value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1">Aktif</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" th:checked="(${product.getPspki()} =='Dahil')">
+                  <label class="form-check-label" for="inlineCheckbox2">Ürün Satış Fiyatına KDV Dahil mi?</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option1" th:checked="(${product.getPbpki()} =='Dahil')">
+                  <label class="form-check-label" for="inlineCheckbox3">Ürün Alış Fiyatına KDV Dahil mi?</label>
+                </div>
+              </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+              <button  type="submit" class="btn btn-info" data-bs-dismiss="modal">KAYDET</button>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="modal fade " id="add-stock" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #3e64ff" >
+          <h5 class="modal-title" id="exampleModalLabel5" style="color: white">KATEGORİ EKLE</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-stock">
+            <div class="mb-3">
+              <label for="warehouse-select" class="form-label" style="color: black"><b>Depo</b> </label>
+              <select  id="warehouse-select" class="selectpicker" data-width="100%"  data-live-search="true">
+
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="quantity" class="col-form-label">Miktar</label>
+              <input type="number" class="form-control" name="quantity" id="quantity">
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-info" data-bs-dismiss="modal">Ekle</button>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</th:block>
+<th:block layout:fragment="script">
+  <script th:src="@{/js/product_detail.js}"></script>
+</th:block>
+</body>
+</html>

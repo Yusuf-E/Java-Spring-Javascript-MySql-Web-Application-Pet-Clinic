@@ -1,0 +1,152 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+  <title>Tedarikçiler</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+<th:block layout:fragment="content" >
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-success mr-3" data-bs-toggle="modal" data-bs-target="#supplierAddModal">Yeni Tedarikçi Ekle</button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-card mb-3 card mainCart">
+    <div class="card-header cardHeader">Tedarikçiler</div>
+
+    <div class="row mt-3" style="padding-right: 15px; padding-left: 15px;">
+
+    </div>
+    <div class="table-responsive">
+
+      <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+        <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Tedarikçi</th>
+          <th scope="col">E-Mail</th>
+          <th scope="col">Telefon Numarası</th>
+          <th scope="col">Durumu</th>
+        </tr>
+        </thead>
+        <tbody id="supplierRow">
+
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Supplier Modal -->
+  <div class="modal fade" id="supplierAddModal" tabindex="-1" aria-labelledby="supplierAddModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #3e64ff" >
+          <h5 class="modal-title" id="supplierAddModal1" style="color: white">Yeni Tedarikçi Ekle</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-supplier"  class="row p-3">
+            <div class="col-md-12 mb-3">
+              <label for="sname" class="form-label">Tedarikçi İsmi/Ünvanı</label>
+              <input type="text" name="sname" id="sname" class="form-control"  required />
+
+            </div>
+            <div class="col-md-12 mb-3">
+              <label for="semail" class="form-label">Email</label>
+              <input type="email" name="semail" id="semail" class="form-control"  required />
+
+            </div>
+
+            <div class="col-md-12 mb-1">
+              <label for="sphone" class="form-label">Telefon Numarası</label>
+              <input type="text" name="sphone" id="sphone" class="form-control" required />
+
+            </div>
+            <div class="col-md-12 mb-3">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox"  id="sstatus" value="option1">
+                <label class="form-check-label" for="sstatus">Aktif</label>
+              </div>
+            </div>
+
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Ekle</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Supplier Update Modal -->
+  <div class="modal fade" id="supplierUpdateModal" tabindex="-1" aria-labelledby="supplierUpdateModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #3e64ff" >
+          <h5 class="modal-title" id="supplierUpdateModal1" style="color: white">Tedarikçi Güncelle</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="form-supplier-update" class="row p-3">
+            <div class="col-md-12 mb-3">
+              <label for="usname" class="form-label">Tedarikçi İsmi/Ünvanı</label>
+              <input type="text" name="usname" id="usname" class="form-control"  required />
+
+            </div>
+            <div class="col-md-12 mb-3">
+              <label for="usemail" class="form-label">Email</label>
+              <input type="email" name="usemail" id="usemail" class="form-control"  required />
+
+            </div>
+
+            <div class="col-md-12 mb-1">
+              <label for="usphone" class="form-label">Telefon Numarası</label>
+              <input type="text" name="usphone" id="usphone" class="form-control" required />
+
+            </div>
+            <div class="col-md-12 mb-3">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox"  id="usstatus" value="option1">
+                <label class="form-check-label" for="usstatus">Aktif</label>
+              </div>
+            </div>
+
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+              <button type="submit" class="btn btn-primary"data-bs-dismiss="modal">Kaydet</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</th:block>
+
+<th:block layout:fragment="script">
+  <script th:src="@{/js/suppliers_add.js}"></script>
+</th:block>
+
+
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+  <title>Ürünler</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+<th:block layout:fragment="content" >
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <button type="button" class="btn-sm btn-success  mr-3"  data-bs-toggle="modal" data-bs-target="#orderBuying3" >YENİ ÜRÜN EKLE</button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-card mb-3 card mainCart">
+    <div class="card-header cardHeader">ÜRÜNLER</div>
+
+    <div class="row mt-3" style="padding-right: 15px; padding-left: 15px;">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+        <div class="input-group flex-nowrap">
+          <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
+          <input id="search" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
+          <button id="customerSearch" class="btn btn-outline-primary">Ara</button>
+        </div>
+      </div>
+
+
+
+
+    </div>
+    <div class="table-responsive">
+
+      <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+      <thead>
+      <tr>
+        <th scope="col">ÜRÜN ADI</th>
+        <th scope="col">BARKODU</th>
+        <th scope="col">ALIŞ FİYATI</th>
+        <th scope="col">SATIŞ FİYATI</th>
+      </tr>
+      </thead>
+      <tbody id="productRow">
+
+
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="modal fade" id="orderBuying3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #3e64ff" >
+          <h5 class="modal-title" id="exampleModalLabel3" style="color: white">ÜRÜN EKLE</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="product-add-form">
+            <div class="row">
+              <div class="col-sm-6">
+                <label for="product-name" class="col-form-label">Ürün Adı</label>
+                <input type="text" class="form-control" id="product-name">
+              </div>
+              <div class="col-sm-6"></div>
+              <div class="col-sm-6">
+                  <label for="product-unit" class="form-label">Birim</label>
+                  <select class="form-select" name="product-unit" id="product-unit">
+                    <option value="0" >Seçiniz</option>
+                    <option value="1">Adet</option>
+                    <option value="2">Kutu</option>
+                    <option value="3">Şişe</option>
+                    <option value="5">Diğer</option>
+                  </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="product-category"  class="form-label">Kategori</label>
+                <select  id="product-category" class="selectpicker" data-width="100%"  data-live-search="true"></select>
+              </div>
+              <div class="col-sm-6">
+                <label for="product-type" class="form-label">Ürün Tİpi</label>
+                <select class="form-select" name="product-type" id="product-type">
+                  <option value="0" >Seçiniz</option>
+                  <option value="1">Çiftlik Aşı</option>
+                  <option value="2">Damla</option>
+                  <option value="3">Enjeksiyon</option>
+                  <option value="4">Hap</option>
+                  <option value="5">Diğer</option>
+                </select>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="product-supplier"  class="form-label">Tedarikçi</label>
+                <select  id="product-supplier" class="selectpicker" data-width="100%"  data-live-search="true"></select>
+              </div>
+              <div class="col-sm-4">
+                <label for="pbarcode" class="col-form-label">Ürün Barkod</label>
+                <input type="text" class="form-control" id="pbarcode">
+              </div>
+              <div class="col-sm-4">
+                <label for="pcode" class="col-form-label">Ürün Kodu</label>
+                <input type="text" class="form-control" id="pcode">
+              </div>
+              <div class="col-sm-4">
+                <label for="ptax" class="form-label">KDV</label>
+                <select class="form-select" name="ptax" id="ptax" required>
+                  <option value="">Seçiniz</option>
+                  <option value="0">Dahil</option>
+                  <option value="1">%1</option>
+                  <option value="2">%8</option>
+                  <option value="3">%18</option>
+                </select>
+              </div>
+              <div class="col-sm-4">
+                <label for="bprice" class="col-form-label">Alış Fiyatı</label>
+                <input type="text" class="form-control" id="bprice">
+              </div>
+              <div class="col-sm-4">
+                <label for="sprice" class="col-form-label">Satış Fiyatı</label>
+                <input type="text" class="form-control" id="sprice">
+              </div>
+              <div class="col-sm-4">
+                <label for="critic" class="col-form-label">Kritik Stok Miktarı</label>
+                <input type="text" class="form-control" id="critic">
+              </div>
+
+              <div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox1">Aktif</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                  <label class="form-check-label" for="inlineCheckbox2">Ürün Satış Fiyatına KDV Dahil mi?</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option1">
+                  <label class="form-check-label" for="inlineCheckbox3">Ürün Alış Fiyatına KDV Dahil mi?</label>
+                </div>
+              </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+              <button  type="submit" class="btn btn-info" data-bs-dismiss="modal">KAYDET</button>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  </div>
+
+</th:block>
+
+
+<th:block layout:fragment="script">
+  <script th:src="@{/js/product.js}"></script>
+</th:block>
+
+</body>
+
+</html>

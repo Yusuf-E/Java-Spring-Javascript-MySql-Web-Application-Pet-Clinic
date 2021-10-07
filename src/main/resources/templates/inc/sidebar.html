@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="sidebar">
+<nav id="sidebar" class="active " >
+
+    <ul class="list-unstyled components mb-5 invisiblescroll " style="height: 750px; overflow-y: scroll">
+
+        <h6><a  class="logo">Pet Klinik</a></h6>
+        <li class="">
+            <a href="/"><span class="fas fa-home"></span>
+                <div class="menu_div" >Anasayfa</div>
+
+            </a>
+        </li>
+        <li class="">
+            <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dropdown-btn"><span class="far fa-user dropdown-toggle "></span>
+                <div class="menu_div">Müşteri</div>
+            </a>
+
+            <div class="dropdown-container">
+                <a data-toggle="collapse" aria-expanded="false" class="drp-a" href="/customer"> <span class="fas fa-user-plus"></span>
+                    <div class="menu_div"> Yeni Müşteri Ekle</div>
+                </a>
+                <a data-toggle="collapse" aria-expanded="false" class="drp-a" href="/customer/list"> <span class="fas fa-search"></span>
+                    <div class="menu_div"> Müşteri Arama</div>
+                </a>
+            </div>
+        </li>
+
+
+        <li class="">
+            <a th:href="@{/calendar}"><span class="far fa-calendar-alt"></span>
+                <div class="menu_div">Randevu Takvimi</div>
+            </a>
+        </li>
+        <li class="">
+            <a href="/orders/sale"><span class="fas fa-shopping-basket"></span>
+                <div class="menu_div">Satış</div>
+            </a>
+        </li>
+        <li class="">
+            <a href="/orders/buying"><span class="fas fa-truck"></span>
+                <div class="menu_div">Alış</div>
+            </a>
+        </li>
+        <li class="">
+            <a href="/lab-customer"><span class="fas fa-flask"></span>
+                <div class="menu_div">Labaratuvar</div>
+            </a>
+        </li>
+        <li class="">
+            <a href="/company-cashier"><span class="fas fa-money-check-alt"></span>
+                <div class="menu_div">Kasa İşlemleri</div>
+            </a>
+        </li>
+        <li class="">
+            <a data-toggle="collapse" aria-expanded="false" class="drp-a" href="/product"><span  class="fas fa-people-carry"></span>
+                <div class="menu_div">Ürün Tanım</div>
+            </a>
+
+        </li>
+        <li class="">
+            <a href="/suppliers"><span class="fa fa-truck"></span>
+                <div class="menu_div">Tedarikçiler</div>
+            </a>
+        </li>
+        <li class="">
+            <a href="/diary"><span class="fa fa-bell"></span>
+                <div class="menu_div">Ajandam</div>
+            </a>
+        </li>
+        <li class="">
+            <a href="/warehouse"><span class="fab fa-dropbox"></span>
+                <div class="menu_div">Depo</div>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="/category"><span class="fa fa-plus-square"></span>
+                <div class="menu_div">Tanımlamalar</div>
+            </a>
+        </li>
+        <li class="">
+            <a href="#" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dropdown-btn"><span class="fa fa-cog "></span>
+                <div class="menu_div">Ayarlar</div>
+            </a>
+            <div class="dropdown-container">
+                <a data-toggle="collapse" aria-expanded="false" class="drp-a" href="/users"><span class="fas fa-users"></span>
+                    <div class="menu_div">Kullanıcılar</div>
+                </a>
+
+            </div>
+        </li>
+
+
+    </ul>
+</nav>
+</th:block>
+</body>
+</html>

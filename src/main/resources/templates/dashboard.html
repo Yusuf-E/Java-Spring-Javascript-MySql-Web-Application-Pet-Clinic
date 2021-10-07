@@ -1,0 +1,178 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+  <title>Yönetim</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+
+<!--Navbar  -->
+
+<th:block layout:fragment="content" >
+
+
+
+  <h3 class="mb-3">
+    Dashboard
+    <small class="h6">Yönetim Paneli</small>
+  </h3>
+
+
+
+
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="card mb-3"
+           style=" background-color:#F84331; height:140px;border-width:0; box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);">
+        <div class="card-body">
+          <h4 class="card-title badge badge-success mr-1 ml-0 text-white p-2"
+              style="font-size:.88rem;background-color: #F84331">Günlük Beklenen Kazanım</h4>
+          <div class="row space-5">
+            <div class="col-sm-12 col-md-12" style="height: 20px;">
+              <span class="ff-2 fs-14 bold" style="color: white;"><b> 0 </b></span>
+            </div>
+            <div class="col-6 col-sm-6 col-md-12">
+              <hr>
+              <div>
+                <span class="ff-2 fs-14 bold" style="color: white;"><b> -0,00% Bir Önceki Güne Oranla </b></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3"
+           style=" background-color: #1FDFB2; height:140px;border-width:0; box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);">
+        <div class="card-body">
+          <h4 class="card-title badge badge-success mr-1 ml-0 text-white p-2"
+              style="font-size:.88rem;background-color: #1FDFB2  ;">Günlük Yeni Müşteri Kazanım</h4>
+          <div class="row space-5">
+            <div class="col-sm-12 col-md-12" style="height: 20px;">
+              <span class="ff-2 fs-14 bold" style="color: white;"><b> 0 </b></span>
+            </div>
+            <div class="col-6 col-sm-6 col-md-12">
+              <hr>
+              <div>
+                <span class="ff-2 fs-14 bold" style="color: white;"><b> -0,00% Bir Önceki Güne Oranla </b></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3"
+           style=" background-color:#3F4FE9; height:140px;border-width:0; box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);">
+        <div class="card-body">
+          <h4 class="card-title badge badge-success mr-1 ml-0 text-white p-2"
+              style=" font-size:.88rem;background-color: #3F4FE9;">Günlük Ciro</h4>
+          <div class="row space-5">
+            <div class="col-sm-12 col-md-12" style="height: 20px;">
+              <span class="ff-2 fs-14 bold" style="color: white;"><b> 0, 00 TL </b></span>
+            </div>
+            <div class="col-6 col-sm-6 col-md-12">
+              <hr>
+              <div>
+                <span class="ff-2 fs-14 bold" style="color: white;"><b> -0,00% Bir Önceki Güne Oranla </b></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+    <div class="col-sm-3">
+      <div class="card mb-3"
+           style=" background-color: #FDAE6A; height:140px;border-width:0; box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);">
+        <div class="card-body">
+          <h4 class="card-title badge badge-success mr-1 ml-0 text-white p-2"
+              style="font-size:.88rem;background-color: #FDAE6A;">Toplam Stok Değeri</h4>
+          <div class="row space-5">
+            <div class="col-sm-12 col-md-12" style="height: 20px;">
+              <span class="ff-2 fs-14 bold" style="color: white;"><b> 0,00 TL </b></span>
+            </div>
+            <div class="col-6 col-sm-6 col-md-12">
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+
+      <div class="card">
+        <div class="card-header " ><span class="fas fa-sync-alt"></span>
+          Geçmiş Randevular
+        </div>
+        <div class="card-body">
+          <div class="alert alert-warning" role="alert">
+            Günü Geçmiş Randevunuz bulunamadı...
+          </div>
+          <a class="link" href="#" style="float: right"><u>Daha Fazla Randevu</u></a>
+        </div>
+      </div>
+      </div>
+
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-header"><span class="fas fa-sync-alt"></span>
+          Geçmiş Randevular
+        </div>
+        <div class="card-body">
+          <div class="alert alert-warning" role="alert">
+            Bekleyen Randevunuz bulunamadı...
+          </div>
+          <a class="link" href="#" style="float: right"><u>Daha Fazla Randevu</u></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="col-sm-9"></div>
+  <div class="col-sm-3"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</th:block>
+
+
+<script src="js/jquery-3.6.0.min.js"></script>
+<script src="js/dist/popover.js"></script>
+<script src="dist/js/bootstrap.min.js"></script>
+<script src="css/fontawesome-free-5.15.4-web/js/all.min.js"></script>
+<script src="js/site.js"></script>
+</body>
+
+</html>

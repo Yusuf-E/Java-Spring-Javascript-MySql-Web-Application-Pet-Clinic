@@ -1,0 +1,78 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+  <title>Müşteriler</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+<th:block layout:fragment="content" >
+
+  <div class="main-card mb-3 card mainCart">
+    <div class="card-header cardHeader">Müşteriler</div>
+
+    <div class="row mt-3" style="padding-right: 15px; padding-left: 15px;">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-4"></div>
+      <div class="col-sm-2 mb-3">
+
+          <select class="form-select" name="case" id="case">
+            <option value="0" >Seçiniz</option>
+            <option value="1">Aktif</option>
+          </select>
+
+      </div>
+      <div class="col-sm-3">
+        <div class="input-group flex-nowrap">
+          <span class="input-group-text" id="addon-wrapping"><i class="fas fa-search"></i></span>
+          <input id="search" type="text" class="form-control" placeholder="Arama.." aria-label="Username" aria-describedby="addon-wrapping">
+          <button id="customerSearch" class="btn btn-outline-primary">Ara</button>
+        </div>
+      </div>
+
+
+
+
+    </div>
+    <div class="table-responsive">
+
+      <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+      <thead>
+      <tr>
+        <th  scope="col">Müşteri Adı ve Soyadı</th>
+        <th scope="col">Telefon Numarası</th>
+        <th scope="col">E-mail Adresi</th>
+        <th scope="col">Tc No</th>
+        <th scope="col">Not</th>
+
+      </tr>
+      </thead>
+      <tbody id="customerRow">
+
+
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+
+
+
+
+  </div>
+
+</th:block>
+
+<th:block layout:fragment="script">
+  <script th:src="@{/js/lab_list.js}"></script>
+</th:block>
+
+</body>
+
+</html>

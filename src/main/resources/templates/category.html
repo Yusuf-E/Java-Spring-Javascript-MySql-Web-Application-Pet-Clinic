@@ -1,0 +1,118 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+    <title>Kategoriler</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+<th:block layout:fragment="content" >
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button type="button" class="btn btn-success mr-3" data-bs-toggle="modal" data-bs-target="#orderBuying2"><span class="fas fa-plus"></span> Kategori Ekle</button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            </div>
+        </div>
+    </nav>
+
+    <!--<div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>!!!!! HANGİSİ YAPILACAK SEÇİLECEK VE RENGİ BEYAZ CIKIYOR !!!!!
+  -->
+
+
+
+
+
+
+
+    <div class="main-card mb-3 card mainCart">
+        <div class="card-header cardHeader">KATEGORİLER</div>
+
+        <div class="row mt-3" style="padding-right: 15px; padding-left: 15px;">
+
+        </div>
+        <div class="table-responsive">
+
+            <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                <thead>
+                <tr class="text-center">
+                    <th scope="col">#</th>
+                    <th scope="col">Kategori Adı</th>
+                </tr>
+                </thead>
+                <tbody class="text-center" id="categoryRow">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade " id="orderBuying2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #3e64ff" >
+                    <h5 class="modal-title" id="exampleModalLabel5" style="color: white">KATEGORİ EKLE</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-category">
+                        <div class="mb-3">
+                            <label for="categoryname" class="col-form-label">KATEGORİ</label>
+                            <input type="text" class="form-control" name="categoryname" id="categoryname">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-info" data-bs-dismiss="modal">Ekle</button>
+
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade " id="categoryUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #3e64ff" >
+                    <h5 class="modal-title" id="exampleModalLabel6" style="color: white">KATEGORİ EKLE</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-category-update">
+                        <div class="mb-3">
+                            <label for="categoryupdatename" class="col-form-label">KATEGORİ</label>
+                            <input type="text" class="form-control" name="categoryupdatename" id="categoryupdatename">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-info" data-bs-dismiss="modal">Ekle</button>
+
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/category_add.js}"></script>
+</th:block>
+
+</body>
+
+</html>

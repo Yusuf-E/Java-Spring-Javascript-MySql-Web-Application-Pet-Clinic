@@ -1,0 +1,198 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+  <title>Alış Arama</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+
+<th:block layout:fragment="content" >
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <button type="button" class="btn btn-info mr-3"  data-bs-toggle="modal" data-bs-target="#orderBuying1" >Kayıtlı Tedarikçiden Alış</button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      </div>
+    </div>
+  </nav>
+
+  <!--<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>!!!!! HANGİSİ YAPILACAK SEÇİLECEK VE RENGİ BEYAZ CIKIYOR !!!!!
+-->
+
+
+
+
+
+
+
+  <div class="main-card mb-3 card mainCart">
+    <div class="card-header cardHeader">Alışlar</div>
+
+    <div class="row mt-3" style="padding-right: 15px; padding-left: 15px;">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3"></div>
+      <div class="col-sm-3">
+      </div>
+
+
+
+
+    </div>
+    <div class="table-responsive">
+
+      <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Tedarikçi</th>
+          <th scope="col">Ödeme Tipi</th>
+          <th scope="col">Tutar</th>
+          <th scope="col">Not</th>
+          <th scope="col">Tarih</th>
+        </tr>
+        </thead>
+        <tbody id="tableBuy">
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal fade" id="orderBuying1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #3e64ff" >
+          <h5 class="modal-title" id="exampleModalLabel4" style="color: white">KAYITLI TEDARİKÇİDEN ALIŞ</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+<!--          <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label"></label>
+              <input type="text" class="form-control" id="recipient-name" placeholder="Tedarikçi Firma Arayın">
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name1" class="col-form-label">Ürün Arama</label>
+              <input type="text" class="form-control" id="recipient-name1" placeholder="Ürün isminden arayın">
+            </div>
+            <div class="mb-3">
+              <label for="recipient-name2" class="col-form-label">Fatura No</label>
+              <input type="text" class="form-control" id="recipient-name2" >
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label"></label>
+              <textarea class="form-control" id="message-text" placeholder="Alış notunuzu giriniz"></textarea>
+            </div>
+          </form>-->
+          <div class="row">
+            <form class="row p-3" id="box_add_form">
+
+
+              <div class="col-md-3 mb-3">
+                <label for="suppliers" class="form-label">Tedarikçiler</label>
+                <select onchange="allBox()"  name="suppliers" id="suppliers" class="selectpicker" data-width="100%" data-show-subtext="true" data-live-search="true">
+
+                </select>
+              </div>
+
+              <div class="col-md-3 mb-3">
+                <label for="product" class="form-label">Ürünler</label>
+                <select name="product" id="product" class="selectpicker" data-width="100%" data-show-subtext="true" data-live-search="true">
+
+                </select>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="warehouse" class="form-label">Depo</label>
+                <select name="warehouse" id="warehouse" class="selectpicker" data-width="100%" data-show-subtext="true" data-live-search="true">
+
+                </select>
+              </div>
+
+
+              <div class="col-md-3 mb-3">
+                <label for="quantity" class="form-label">Adet</label>
+                <input type="number" min="1" max="100" name="quantity" id="quantity" class="form-control" />
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="bNo" class="form-label">Fiş No</label>
+                <input type="text" min="1" max="100" name="bNo" id="bNo" class="form-control" />
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="price" class="form-label">Fiyat</label>
+                <input type="text" min="1" max="100" name="price" id="price" class="form-control" />
+              </div>
+
+              <div class="col-md-3 mb-3">
+
+              </div>
+              <div class="col-md-3 mb-3">
+
+              </div>
+
+              <div class="btn-group col-md-3 " role="group">
+                <button  type="submit" class="btn btn-outline-primary mr-1">Ekle</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="row">
+            <div class="table-responsive">
+              <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                <thead>
+                <tr>
+                  <th>Ürün</th>
+                  <th>Fiyat</th>
+                  <th>Miktar</th>
+                  <th>Fiş No</th>
+                  <th>Depo</th>
+                  <th class="text-center" style="width: 55px;" >Sil</th>
+                </tr>
+                </thead>
+                <tbody id="tableRow">
+                <<!-- for loop  -->>
+
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <div class="col-md-3 mb-3">
+            <select class="form-select" name="payment-type" id="payment-type">
+              <option value="0" >Seçiniz</option>
+              <option value="1">Nakit</option>
+              <option value="2">Banka Kartı</option>
+              <option value="3">Banka Havalesi</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kapat</button>
+          <button onclick="fncSaveBox()" type="button" class="btn btn-primary">Alışı Tamamla</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+</th:block>
+
+
+<th:block layout:fragment="script">
+  <script th:src="@{/js/buying.js}"></script>
+</th:block>
+
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="inc/layout">
+
+<head>
+    <title>Ürünler Detay</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+
+<body>
+<th:block layout:fragment="content" >
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button type="button" class="btn btn-info mr-3 " data-bs-toggle="modal" data-bs-target="#plabdetailModel" >Sonuç Ekle</button>
+    </nav>
+    <div class="row">
+        <div class="col-sm-3">
+            <table class="table">
+                <thead >
+                <tr><td><b>Hasta Adı: </b> <span th:text="${pet.getCpatient()}"></span> </td></tr>
+                </thead>
+                <tbody style="color: black">
+                <tr><td><b>Durum: </b> <span th:text="${pet.getCbarren()}"></span> </td></tr>
+                <tr><td><b>Cinsi: </b>
+                <span class="mr-5" th:if="${pet.getCkind()} ==  1"><span>Kedi</span></span>
+                <span class="mr-5" th:if="${pet.getCkind()} ==  2"> <span>Köpek</span></span>
+                <span class="mr-5" th:if="${pet.getCkind()} ==  3"> <span>Kanatlı</span></span>
+                <span class="mr-5" th:if="${pet.getCkind()} ==  4"> <span>Büyükbaş</span></span>
+                <span class="mr-5" th:if="${pet.getCkind()} ==  5"> <span>Egzotik</span></span></td></tr>
+                <tr><td><b>Cinsiyet: </b> <span th:text="${pet.getCgender()}"></span> </td></tr>
+                <tr><td><b>Dogum Tarihi: </b> <span th:text="${pet.getCbirth()}"></span> </td></tr>
+                <tr><td><b>Renk: </b> <span th:text="${pet.getPColor().getPcolor()}"></span> </td></tr>
+                <tr><td><b>Karne No: </b> <span th:text="${pet.getCreport()}"></span> </td></tr>
+                <tr><td><b>Çip No: </b> <span th:text="${pet.getCchip()}"></span> </td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-9">
+            <div class="main-card mb-3 card mainCart">
+                <div class="card-header cardHeader text-center">Hasta</div>
+            </div>
+            <div class="card">
+
+                <div class="card-body" style="color: black">
+                    <div class="table-responsive">
+
+                        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                            <thead>
+                            <tr class="text-center">
+                                <th scope="col">Sonuç Tarihi</th>
+                                <th scope="col">Laboratuvar Türü</th>
+                                <th  scope="col">Detay</th>
+
+                            </tr>
+                            </thead>
+                            <tbody class="text-center" id="labRow">
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!--Modal-->
+        <div class="modal fade" id="plabdetailModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #3e64ff" >
+                        <h5 class="modal-title" id="exampleModalLabel4" style="color: white">Laboratuvar Sonucu Ekle</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form th:action="@{/patientDetail/lab}" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <input type="hidden" name="petID" id="petID" th:value="${pet.getPid()}">
+                                    <label for="type" class="form-label">Laboratuvar Türü</label>
+                                    <select class="form-select" name="type" id="type">
+                                        <option value="0" >Seçiniz</option>
+                                        <option value="1">Hemogram</option>
+                                        <option value="2">Röntgen</option>
+                                        <option value="3">Biyokimya</option>
+                                        <option value="4">Diger</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-sm-6">
+                                    <label >Dosya Seç</label>
+                                    <div class="custom-file mb-3">
+                                        <label class="custom-file-label" for="fileimage">Dosya Seçiniz</label>
+                                        <input type="file" class="custom-file-input" id="fileimage" name="imagename">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="result" class="col-form-label">Teşhis</label>
+                                <textarea class="form-control" id="result" name="result"></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kapat</button>
+                                <button type="submit" class="btn btn-info" data-bs-dismiss="modal">Kaydet</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Modal Detail-->
+        <div class="modal fade" id="plabViewModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #3e64ff" >
+                        <h5 class="modal-title" id="exampleModalLabel5" style="color: white">Laboratuvar Sonucu Ekle</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                            <div class="row">
+
+
+                                <div class="col-sm-3">
+
+                                    <div class="col-md-12 mb-3">
+                                    <label for="labtype" class="form-label" style="color: black"> <b> Tür </b> </label>
+                                    <span style="color: black"> <p name="labtype" id="labtype" >  </p> </span>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                    <label for="labdate" class="form-label" style="color: black"> <b> Tarih </b> </label>
+                                    <span style="color: black" > <p name="labdate" id="labdate" >  </p></span>
+                                </div>
+                                    <div class="col-md-12 mb-1">
+                                    <label for="labresult" class="form-label" style="color: black"> <b> Teshis </b> </label>
+                                    <span style="color: black" >  <p name="labresult" id="labresult" >  </p>  </span>
+                                </div>
+
+                                </div>
+
+
+
+                                <div class="col-sm-9" >
+
+                                    <img id="imgID"  alt="" style="height: 300px;">
+
+                                </div>
+
+
+
+
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kapat</button>
+                                    <button type="submit" class="btn btn-info" data-bs-dismiss="modal">Kaydet</button>
+                                </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/patient-detail-list.js}"></script>
+</th:block>
+
+</body>
+</html>
